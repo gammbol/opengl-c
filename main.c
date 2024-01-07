@@ -101,8 +101,11 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
 
         // triangle: drawing
+        float glTime = glfwGetTime();
+        float offset = (sin(glTime) / 2.0f);
+        setFloat(&shader, "offset", offset);
+
         use(&shader);
-        setFloat(&shader, "offset", 0.2f);
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
