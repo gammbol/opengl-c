@@ -3,7 +3,8 @@ project(opengl_learn C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(opengl_learn main.c)
+add_executable(opengl_learn main.c
+        deps/stb_image/stb_image.h)
 
 add_subdirectory(deps/glfw)
 add_subdirectory(deps/glad)
@@ -14,6 +15,7 @@ target_include_directories(opengl_learn PUBLIC
         "${PROJECT_BINARY_DIR}/deps/glfw/include"
         "${PROJECT_BINARY_DIR}/deps/glad/include"
         "${PROJECT_BINARY_DIR}/deps/shaderlib/include"
+        "${PROJECT_BINARY_DIR}/deps/stb_image"
 )
 
 configure_file(
@@ -25,4 +27,16 @@ configure_file(
         shaders/shader.fs
         shaders/shader.fs
         COPYONLY
+)
+configure_file(
+        deps/stb_image/stb_image.h
+        deps/stb_image/stb_image.h
+        COPYONLY
+)
+
+file(
+        COPY
+        images
+        DESTINATION
+        ./
 )
