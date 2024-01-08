@@ -6,6 +6,7 @@
 
 #include "shaderlib.h"
 
+// TODO: add comments
 void checkCompileErrors(unsigned int shaderID, const char* type)
 {
     int success;
